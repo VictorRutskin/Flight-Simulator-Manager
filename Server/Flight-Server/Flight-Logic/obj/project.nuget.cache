@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "G4DbUjT9Jti8A85BEz92mqPsGZA6pFLyf71a4Xub3vLmBSIe7x5dwuQ6eegVUT1GGCtoPrhNsBuJ7n70LB1bwg==",
+  "success": true,
+  "projectFilePath": "D:\\Projects\\Git\\My Git\\Web\\Flight-Simulator-Manager\\Server\\Flight-Server\\Flight-Logic\\Flight-Logic.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Victor\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
