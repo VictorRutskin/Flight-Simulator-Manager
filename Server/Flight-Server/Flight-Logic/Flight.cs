@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Flight_Logic
 {
-    internal class Flight
+    public class Flight
     {
+        public int FlightNumber { get; set; }
+        public string Type { get; set; } // landing or takeoff
+        public int CurrentSegment { get; set; }
+        public DateTime StartTime { get; set; }
     }
+
+
 }
