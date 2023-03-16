@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\Flight-Server.props" />
-</Project>
