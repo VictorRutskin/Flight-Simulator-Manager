@@ -20,7 +20,7 @@ namespace Flight_Logic
 
                 // send flight to API
                 var content = new StringContent(JsonConvert.SerializeObject(flight));
-                await _client.PostAsync("http://localhost:5000/api/flights", content);
+                await _client.PostAsync("https://localhost:7026/api/flights", content);
 
                 // wait for random interval before generating the next flight
                 await Task.Delay(new Random().Next(1000, 5000));
@@ -33,7 +33,7 @@ namespace Flight_Logic
             {
                 FlightNumber = new Random().Next(100, 1000),
                 StartTime = DateTime.UtcNow,
-                Type = new Random().Next(2) == 0 ? "landing" : "takeoff",
+                Type = new Random().Next(2) == 0 ? "Landing" : "Departure",
                 CurrentSegment = 1 // starting point
             };
 
