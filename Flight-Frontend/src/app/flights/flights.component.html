@@ -1,0 +1,24 @@
+<h1>Flights</h1>
+<table>
+    <thead>
+      <tr>
+        <th>Flight Number</th>
+        <th>Type</th>
+        <th>Passengers Count</th>
+        <th>Current Segment</th>
+        <th>Start Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let flight of flights">
+        <td>{{ flight.flightNumber }}</td>
+        <td>{{ flight.type }}</td>
+        <td>{{ flight.passengersCount }}</td>
+        <td>{{ flight.currentSegment }}</td>
+        <td>{{ flight.startTime }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <start-button></start-button>
+  

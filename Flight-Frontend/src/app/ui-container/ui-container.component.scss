@@ -1,0 +1,81 @@
+*{
+    color: white;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    position: absolute;
+
+    font-family:'Franklin Gothic Medium';
+    font-size: 50px;
+    line-height: 100px;
+
+}
+.container {
+    height: 800px;
+    width: 800px;
+    background-color: #afd1dd;
+    border: 5px solid #0ff;
+    box-shadow: 0 0 20px #0ff;
+    outline: 5px solid #0ff;
+    transition: all 1s ease-in-out;
+
+    top: 50%;
+    left: 50%;
+    
+  }
+  
+  
+  .air-field{
+    height: 100px;
+    width: 100px;
+    border: 5px solid #00ff00;
+    background-color: blue;
+  }
+
+  .landing-field{
+    height: 100px;
+    width: 300px;
+    border: 5px solid #00ff00;
+    background-color: orange;
+  }
+
+  .parking-field{
+    height: 100px;
+    width: 100px;
+    border: 5px solid #00ff00;
+    background-color: purple;
+  }
+
+  #air-1{
+    top: 20%;
+    left: 90%;
+  }
+  #air-2{
+    top: 20%;
+    left: 75%;
+  }
+  #air-3{
+    top: 20%;
+    left: 60%;
+  }
+
+  #landing-4{
+    top: 20%;
+    left: 30%;
+  }
+
+  #parking-5{
+    top: 40%;
+    left: 10%;
+  }
+  #parking-6{
+    top: 60%;
+    left: 20%;
+  }
+  #parking-7{
+    top: 60%;
+    left: 40%;
+  }
+  #parking-8{
+    top: 40%;
+    left: 50%;
+  }

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Numerics;
 
 namespace Flight_Logic
 {
@@ -15,29 +16,65 @@ namespace Flight_Logic
         {
             while (true)
             {
-                // generate random flight
-                var flight = GenerateRandomFlight();
+                // Randoming value to check if i add new plane or send one flying away
+                Random random = new Random();
+                int FuncToDo = random.Next(1, 3);
 
-                // send flight to API
-                var content = new StringContent(JsonConvert.SerializeObject(flight));
-                await _client.PostAsync("https://localhost:7026/api/flights", content);
+                // New plane landing
+                if (FuncToDo == 1)
+                {
+                    // generate random flight
+                    Plane plane = new Plane();
+
+                    Airport.PlaneLanded(plane);
+
+                    //// send flight to API
+                    //var content = new StringContent(JsonConvert.SerializeObject(plane));
+                    //await _client.PostAsync("https://localhost:7026/api/flights", content);
+                }
+                // Plane in latest lane is flying
+                else if (FuncToDo == 2)
+                {
+                    Airport.PlaneFlies();
+                }
+
 
                 // wait for random interval before generating the next flight
-                await Task.Delay(new Random().Next(1000, 5000));
+                await Task.Delay(new Random().Next(1000, 3000));
             }
         }
 
-        private Flight GenerateRandomFlight()
+        public async Task<string> SingleAction()
         {
-            var flight = new Flight
-            {
-                FlightNumber = new Random().Next(100, 1000),
-                StartTime = DateTime.UtcNow,
-                Type = new Random().Next(2) == 0 ? "Landing" : "Departure",
-                CurrentSegment = 1 // starting point
-            };
+            // Randoming value to check if i add new plane or send one flying away
+            Random random = new Random();
+            int FuncToDo = random.Next(1, 2);
 
-            return flight;
+            // New plane landing
+            if (FuncToDo == 1)
+            {
+                // generate random flight
+                Plane plane = new Plane();
+
+                string logMessage = Airport.PlaneLanded(plane);
+
+                //// send flight to API
+                //var content = new StringContent(JsonConvert.SerializeObject(plane));
+                //await _client.PostAsync("https://localhost:7026/api/flights", content);
+
+                return logMessage;
+            }
+            // Plane in latest lane is flying
+            else if (FuncToDo == 2)
+            {
+                
+                return Airport.PlaneFlies();
+
+            }
+            return null;
+
+
+            // wait for random interval before generating the next flight
         }
     }
 }
