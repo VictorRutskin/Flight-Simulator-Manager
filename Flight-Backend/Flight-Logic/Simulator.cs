@@ -48,7 +48,7 @@ namespace Flight_Logic
         {
             // Randoming value to check if i add new plane or send one flying away
             Random random = new Random();
-            int FuncToDo = random.Next(1, 2);
+            int FuncToDo = random.Next(1, 3);
 
             // New plane landing
             if (FuncToDo == 1)

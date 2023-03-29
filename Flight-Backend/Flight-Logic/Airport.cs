@@ -81,7 +81,8 @@ namespace Flight_Logic
                         }
                     }
                     DateTime dateTime = DateTime.Now;
-                    string NowTime = dateTime.ToString();
+                    string NowTime = dateTime.ToString("o");
+
 
                     return "At " + NowTime + ", Flight number " + localplane.FlightNumber + " that has " + localplane.PassengersCount + " passengers has departured from field 8.";
                 }

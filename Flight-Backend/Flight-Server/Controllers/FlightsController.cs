@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Flight_Logic;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace Flight_Server.Controllers
 {
@@ -74,7 +75,10 @@ namespace Flight_Server.Controllers
         public async Task<IActionResult> Simulator_SingleAction()
         {
            string LogResponse = await _simulator.SingleAction();
-            return Ok(LogResponse);
+            JObject jsonObject = new JObject();
+            jsonObject.Add("message", LogResponse);
+            return Ok(jsonObject.ToString());
+            // return Ok(LogResponse);
         }
 
 

@@ -13,7 +13,8 @@ namespace Flight_Logic
             CurrentField = currentField;
 
             DateTime dateTime = DateTime.Now;
-            LandingTime = dateTime.ToString();
+            LandingTime = dateTime.ToString("o");
+
         }
         public Plane()
         {
@@ -35,7 +36,8 @@ namespace Flight_Logic
             CurrentField = random.Next(1, 10);
 
             DateTime dateTime = DateTime.Now;
-            LandingTime = dateTime.ToString();
+            LandingTime = dateTime.ToString("o");
+
 
         }
 
