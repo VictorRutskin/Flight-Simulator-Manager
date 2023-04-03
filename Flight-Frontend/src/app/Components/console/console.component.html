@@ -1,3 +1,6 @@
 <div class="console">
-    <div *ngFor="let message of messages">{{ message }}</div>
+  <div class="Title">Console</div>
+    <div *ngFor="let message of messages; let i = index">
+      {{ i+1 }}. {{ message }}
+    </div>
   </div>

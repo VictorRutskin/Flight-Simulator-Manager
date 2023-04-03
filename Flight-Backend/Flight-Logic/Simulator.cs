@@ -10,39 +10,7 @@ namespace Flight_Logic
         public Simulator()
         {
             _client = new HttpClient();
-        }
-
-        public async Task Start()
-        {
-            while (true)
-            {
-                // Randoming value to check if i add new plane or send one flying away
-                Random random = new Random();
-                int FuncToDo = random.Next(1, 3);
-
-                // New plane landing
-                if (FuncToDo == 1)
-                {
-                    // generate random flight
-                    Plane plane = new Plane();
-
-                    Airport.PlaneLanded(plane);
-
-                    //// send flight to API
-                    //var content = new StringContent(JsonConvert.SerializeObject(plane));
-                    //await _client.PostAsync("https://localhost:7026/api/flights", content);
-                }
-                // Plane in latest lane is flying
-                else if (FuncToDo == 2)
-                {
-                    Airport.PlaneFlies();
-                }
-
-
-                // wait for random interval before generating the next flight
-                await Task.Delay(new Random().Next(1000, 3000));
-            }
-        }
+        }    
 
         public async Task<string> SingleAction()
         {

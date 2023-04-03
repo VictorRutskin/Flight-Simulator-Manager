@@ -64,13 +64,6 @@ namespace Flight_Server.Controllers
             return Ok(flight);
         }
 
-        [HttpPost("start-simulator")]
-        public async Task<IActionResult> StartSimulator()
-        {
-            await _simulator.Start();
-            return Ok();
-        }
-
         [HttpPost("RandomAction")]
         public async Task<IActionResult> Simulator_SingleAction()
         {

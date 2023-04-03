@@ -1,1 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
+$color-primary: #87CEEB;
+$color-secondary: #0F4C81;
+$color-accent: #D3D3D3;
+
+// UI
+$UI-Background:#576CBC;
+$UI-Border:#19376D;
+$UI-Border-Glow:#0B2447;
+$UI-Text-Color:#19376D;
+
+$UI-Air-Cube-Background:#B2A4FF;
+$UI-Landing-Cube-Background:#FFDEB4;
+$UI-Parking-Cube-Background:#FFB4B4;
+
+$UI-Cube-Border-Occupied:#ce0202;
+$UI-Cube-Border-Free:#15bf15;
+
+// Console
+$Console-Background:#576CBC;
+$Console-Border:#19376D;
+$Console-Text-Color:#19376D;
+$Console-Text-Size:14px;
+
+
+
+
+$color-background: #A5D7E8;
+$color-text: #008000;
+
+
+$color-air: #FFA500;
+$color-departure: #FF0000;
+$color-parked: #0000FF;
+
+* {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium';
+    line-height: 20px;
+
+  }
+
+  body{
+    background-color: $color-background;
+  }
+
+  .Title{
+    font-size: 30px;
+top: 5%;
+left: 50%;
+padding-bottom: 10px; 
+border-bottom: 1px solid #ccc; 
+line-height: 15px;
+
+  }
+  

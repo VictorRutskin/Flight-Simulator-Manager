@@ -1,7 +1,6 @@
 @import '../../../styles.scss';
 
-
-  .console {
+.container {
     background-color: $Console-Background;
     color: $Console-Text-Color;
     border: 10px solid $Console-Border;
@@ -10,16 +9,20 @@
     width: 600px;
     height: 300px;
     font-size: $Console-Text-Size;
-    overflow-y: auto; 
+    overflow-y: auto; /* add a scrollbar to the y-axis */
   
     position: absolute;
-    top: 55%;
+    top: 7%;
     left: 55%;
 
   }
-  
-  .console div {
-    padding-bottom: 10px; 
-    border-bottom: 1px solid #ccc; 
+
+  button{
+    background-color: $Console-Background;
+    color: $Console-Text-Color;
+    border: 5px solid $Console-Border;
+    margin: 20px;
+    padding: 8px;
+    font-size: 30px;
+
   }
-  

@@ -5,17 +5,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FlightsComponent } from './Components/flights/flights.component';
-import { StartSimulationButtonComponent } from './Components/start-button/start-button.component';
 import { UiContainerComponent } from './Components/ui-container/ui-container.component';
 import { ConsoleComponent } from './Components/console/console.component';
+import { MainPageComponent } from './Pages/main-page/main-page.component';
+import { ControllerComponent } from './Components/controller/controller.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FlightsComponent,
-    StartSimulationButtonComponent,
     UiContainerComponent,
     ConsoleComponent,
+    MainPageComponent,
+    ControllerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
