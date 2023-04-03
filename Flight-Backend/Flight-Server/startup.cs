@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Options;
 using Server.Helpers;
 using System.Text;
 
@@ -16,6 +17,7 @@ namespace Flight_Server.startup
         public void ConfigureServices(IServiceCollection services)
         {
             ConfiguredValues configuredValues = new ConfiguredValues();
+
 
             services.AddCors(options =>
             {

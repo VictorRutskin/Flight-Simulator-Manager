@@ -1,5 +1,7 @@
 ﻿
 
+using System.ComponentModel.DataAnnotations;
+
 namespace Flight_Logic
 {
     public class Plane
@@ -40,6 +42,9 @@ namespace Flight_Logic
 
 
         }
+
+        [Key]
+        public int PlaneId { get; set; }
 
         private long _flightNumber;
         public long FlightNumber

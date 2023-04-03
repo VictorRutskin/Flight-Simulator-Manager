@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Flight_Logic.Data;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -7,13 +9,19 @@ using System.Threading.Tasks;
 
 namespace Flight_Logic
 {
-    public static class Airport
+    public class Airport
     {
+        private static SimulatorDbcontext simulatorDbcontext;
+
+        public static void Initialize(SimulatorDbcontext dbContext)
+        {
+            simulatorDbcontext = dbContext;
+        }
+
         public static int MaxPlanes = 4; //max landed planes
         public static Plane[] Fields = new Plane[MaxPlanes]; // if true = empty, else occupied, Fields[0] = Field 8 ... Field[3] = Field 5
 
         public static int BasicTimer = 2000; // 2 second tick time
-
 
         public static void EmptyFields()
         {
@@ -23,7 +31,7 @@ namespace Flight_Logic
             }
         }
 
-        public static string PlaneLanded(Plane plane)
+        public static string PlaneLanded(ref Plane plane)
         {
             bool PlaneLanded = false;
 
@@ -34,6 +42,7 @@ namespace Flight_Logic
                     if (Fields[i] == null)
                     {
                         plane = CalculatePlaneField(plane, i); // calculating new plane field
+                        plane.CurrentField = 8-i;
                         Fields[i] = plane; //plane landed
                         PlaneLanded = true;
                         break;
@@ -44,6 +53,8 @@ namespace Flight_Logic
                 {
                     throw new ArgumentException("No free field to land to, the plane moves to the other close airport.");
                 }
+
+
 
                 return "At "+ plane.LandingTime + ", Flight number " + plane.FlightNumber +" that has "+ plane .PassengersCount+ " passengers has landed safely in field " + plane.CurrentField;
             }
@@ -58,7 +69,7 @@ namespace Flight_Logic
 
         }
 
-        public static string PlaneFlies()
+        public async static Task<string> PlaneFlies()
         {
             Plane localplane;
             try
@@ -71,11 +82,22 @@ namespace Flight_Logic
                     localplane = Fields[PlaneThatShouldFlyIsInField8];
                     Fields[PlaneThatShouldFlyIsInField8] = null;
 
-                    for (int i = 0; i < Fields.Length-1; i++)
+                    for (int i = 0; i < Fields.Length - 1; i++)
                     {
                         // advancing all planes
                         if (Fields[i] == null && Fields[i + 1] != null)
                         {
+                            if (simulatorDbcontext != null) // Check if simulatorDbcontext is not null
+                            {
+                                var plane = await simulatorDbcontext.planes.FirstOrDefaultAsync(p => p.CurrentField == 8 - i);
+
+                                if (plane != null)
+                                {
+                                    plane.CurrentField += 1;
+                                    await simulatorDbcontext.SaveChangesAsync();
+                                }
+                            }
+
                             Fields[i] = Fields[i + 1];
                             Fields[i + 1] = null;
                         }
@@ -100,6 +122,7 @@ namespace Flight_Logic
                 return "Unknown error.";
             }
         }
+
 
         private static Plane CalculatePlaneField(Plane plane, int i)
         {

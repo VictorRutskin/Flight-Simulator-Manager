@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Flight_Logic;
+using Flight_Logic.Data;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 
@@ -13,11 +14,13 @@ namespace Flight_Server.Controllers
     {
         private readonly List<Plane> _Planes;
         private readonly Simulator _simulator;
+        private readonly SimulatorDbcontext simulatorDbcontext;
 
-        public FlightsController()
+        public FlightsController(SimulatorDbcontext simulatorDbcontext)
         {
             _Planes = new List<Plane>();
-            _simulator = new Simulator();
+            this.simulatorDbcontext = simulatorDbcontext;
+            _simulator = new Simulator(simulatorDbcontext);
         }
 
         [HttpGet]
