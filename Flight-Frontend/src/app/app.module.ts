@@ -9,6 +9,7 @@ import { UiContainerComponent } from './Components/ui-container/ui-container.com
 import { ConsoleComponent } from './Components/console/console.component';
 import { MainPageComponent } from './Pages/main-page/main-page.component';
 import { ControllerComponent } from './Components/controller/controller.component';
+import { AnimationService } from './Services/Animation-service/animation.service';
 
 @NgModule({
   declarations: [
@@ -17,10 +18,10 @@ import { ControllerComponent } from './Components/controller/controller.componen
     UiContainerComponent,
     ConsoleComponent,
     MainPageComponent,
-    ControllerComponent,
+    ControllerComponent, 
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [],
+  providers: [AnimationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
