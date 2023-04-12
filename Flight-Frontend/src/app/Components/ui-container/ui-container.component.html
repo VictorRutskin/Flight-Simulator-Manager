@@ -4,10 +4,10 @@
   <div class="air-field" id="air-2" [ngStyle]="applyStyle ===2? {'border-color': UI_Cube_Border_Occupied} : null">2</div>
   <div class="air-field" id="air-3" [ngStyle]="applyStyle ===3? {'border-color': UI_Cube_Border_Occupied} : null">3</div>
   <div class="landing-field" id="landing-4" [ngStyle]="applyStyle ===4? {'border-color': UI_Cube_Border_Occupied} : null">4</div>
-  <div class="parking-field" id="parking-5">5</div>
-  <div class="parking-field" id="parking-6">6</div>
-  <div class="parking-field" id="parking-7">7</div>
-  <div class="parking-field" id="parking-8">8</div>
+  <div class="parking-field" id="parking-5" [ngStyle]="ParkingPlanes >3? {'border-color': UI_Cube_Border_Occupied} : null">5</div>
+  <div class="parking-field" id="parking-6" [ngStyle]="ParkingPlanes >2? {'border-color': UI_Cube_Border_Occupied} : null">6</div>
+  <div class="parking-field" id="parking-7" [ngStyle]="ParkingPlanes >1? {'border-color': UI_Cube_Border_Occupied} : null">7</div>
+  <div class="parking-field" id="parking-8" [ngStyle]="ParkingPlanes >0? {'border-color': UI_Cube_Border_Occupied} : null">8</div>
 </div>
 
 

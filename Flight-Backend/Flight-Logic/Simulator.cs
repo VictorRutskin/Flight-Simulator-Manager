@@ -15,6 +15,25 @@ namespace Flight_Logic
             this.simulatorDbcontext = simulatorDbcontext;
         }
 
+        public async Task<string> DeleteAllPlanes()
+        {
+            try
+            {
+                // Delete all planes from the database
+                var planes = await simulatorDbcontext.planes.ToListAsync();
+                simulatorDbcontext.planes.RemoveRange(planes);
+                await simulatorDbcontext.SaveChangesAsync();
+
+                // Return success message
+                return "All planes deleted successfully.";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+
         public async Task<string> SingleAction()
         {
             try
@@ -43,17 +62,27 @@ namespace Flight_Logic
                 // Plane in latest lane is flying
                 else if (FuncToDo == 2)
                 {
-                    var plane = await simulatorDbcontext.planes.FirstOrDefaultAsync(p => p.CurrentField == 8);
+                    // delete all planes from db
+                    await DeleteAllPlanes();
+                    int MaxPlanes = 4;
 
-                    if(plane != null)
+                    var response = await Airport.PlaneFlies();
+
+                    for (int i = 0; i < MaxPlanes; i++)
                     {
-                        simulatorDbcontext.planes.Remove(plane);
-                        await simulatorDbcontext.SaveChangesAsync();
+                        if (Airport.Fields[i] != null)
+                        {
+                            // Reseting id and inputing
+                            Plane plane = Airport.Fields[i];
+                            plane.PlaneId = 0;
+                            simulatorDbcontext.planes.Add(plane);
+                        }
                     }
 
+                    await simulatorDbcontext.SaveChangesAsync();
 
 
-                    return await Airport.PlaneFlies();
+                    return response;
 
                 }
             }
@@ -61,7 +90,7 @@ namespace Flight_Logic
             {
                 return ex.Message;
             }
-            return null;
+            return null!;
 
 
 

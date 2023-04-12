@@ -67,6 +67,17 @@ namespace Flight_Server.Controllers
             return Ok(flight);
         }
 
+
+        [HttpGet("Parking")]
+        public IActionResult GetAmountOfParked()
+        {
+            // Assuming _Planes is a collection of Plane objects
+            var parkedPlanes = _Planes.Count(p => p.Type == "landing" && p.CurrentField == 2);
+
+            return Ok(parkedPlanes);
+        }
+
+
         [HttpPost("RandomAction")]
         public async Task<IActionResult> Simulator_SingleAction()
         {
@@ -75,6 +86,19 @@ namespace Flight_Server.Controllers
             jsonObject.Add("message", LogResponse);
             return Ok(jsonObject.ToString());
             // return Ok(LogResponse);
+        }
+
+        // API endpoint to delete all planes
+        [HttpDelete("DeleteAllPlanes")]
+        public async Task<IActionResult> DeleteAllPlanes()
+        {
+            // Call the delete all planes method in the simulator service
+            string logResponse = await _simulator.DeleteAllPlanes();
+
+            // Return the response as JSON
+            JObject jsonObject = new JObject();
+            jsonObject.Add("message", logResponse);
+            return Ok(jsonObject.ToString());
         }
 
 

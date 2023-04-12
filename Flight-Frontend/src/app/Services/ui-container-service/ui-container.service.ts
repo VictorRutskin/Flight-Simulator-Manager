@@ -1,14 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UiContainerService {
-  private landingSubject = new Subject<void>();
-  landing$ = this.landingSubject.asObservable();
+  invokeFirstComponentFunction = new EventEmitter();    
+  invokeRandomActionApiFunction = new EventEmitter(); // Update this line to correct property name
+  subsVar: Subscription | undefined;    
+    
+  constructor() { }    
 
-  notifyLanding() {
-    this.landingSubject.next();
+  onRandomActionApiCall() { 
+    this.invokeRandomActionApiFunction.emit(); // Update this line to correct property name
   }
 }
