@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AnimationService } from 'src/app/Services/Animation-service/animation.service';
 import { UiContainerService } from 'src/app/Services/ui-container-service/ui-container.service';
 
 @Component({
@@ -12,14 +11,19 @@ export class UiContainerComponent {
   UI_Cube_Border_Free: string | undefined = '#15bf15';
   applyStyle: number = 0; // 
 
-  constructor(private animationService: AnimationService,private uiContainerService: UiContainerService) { } // Inject the service
+  constructor(private uiContainerService: UiContainerService) { } // Inject the service
 
   ngOnInit(): void {
     this.startLanding(); // Call the service method on component initialization
   }
 
   async startLanding(): Promise<void> {
-    await this.animationService.landing(this); // Call the service method and pass the component instance
+    while (this.applyStyle < 5) {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      this.applyStyle += 1;
+    }
+    this.applyStyle = 0;
+    this.onLanding(); 
   }
 
   // checks from database which fields are occupied and paints them red

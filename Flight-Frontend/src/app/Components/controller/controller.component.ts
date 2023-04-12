@@ -1,7 +1,6 @@
 import { SimulatorApiService } from './../../Services/Simulator-Service/simulator-api.service';
 import { Component } from '@angular/core';
 import { ConsoleService } from 'src/app/Services/Console-service/console.service';
-import { AnimationService } from 'src/app/Services/Animation-service/animation.service';
 import { UiContainerComponent } from '../ui-container/ui-container.component';
 import { UiContainerService } from 'src/app/Services/ui-container-service/ui-container.service';
 
@@ -17,7 +16,6 @@ private simulationIntervalId: any;
 constructor(
   private simulatorApiService: SimulatorApiService,
   private consoleService: ConsoleService,
-  private animationService: AnimationService,
   private uiContainerService: UiContainerService // Add this line
 ) {}
 
@@ -50,7 +48,7 @@ getParkingPlanes(){
       async (response) => {
         this.consoleService.log(JSON.stringify(response));
         if (JSON.stringify(response).toString().includes("landed")) {
-          await this.animationService.landing(this); // Pass this reference
+          // await this.animationService.landing(this); // Pass this reference
         }
       },
       (error) => {
