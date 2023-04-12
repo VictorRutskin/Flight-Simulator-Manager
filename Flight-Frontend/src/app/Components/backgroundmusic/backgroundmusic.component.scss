@@ -1,0 +1,11 @@
+@import '../../../styles.scss';
+
+button{
+    background-color: $Console-Background;
+    color: $Console-Text-Color;
+    border: 5px solid $Console-Border;
+    margin: 0px;
+    padding: 6px;
+    font-size: 20px;
+    margin-right: 95%;
+  }

@@ -19,13 +19,9 @@ export class ControllerComponent {
     private uiContainerService: UiContainerService // Add this line
   ) {}
 
-  PerformLanding() {
-    this.uiContainerService.onRandomActionApiCall();
-  }
-
   startSimulation() {
     this.deleteAllPlanes(); // reseting data
-    this.consoleService.log('Simulation started.');
+    this.consoleService.log('Simulation started.',false);
     this.simulationIntervalId = setInterval(() => {
       this.RandomActionAPI();
     }, 5000); // interval of 5 seconds
@@ -33,35 +29,38 @@ export class ControllerComponent {
 
   stopSimulation() {
     clearInterval(this.simulationIntervalId);
-    this.consoleService.log('Simulation stopped.');
+    this.consoleService.log('Simulation stopped.',false);
   }
 
   getParkingPlanes() {
     this.simulatorApiService.getFlights().subscribe(
       (response) => {
-        this.consoleService.log(JSON.stringify(response));
+        this.consoleService.log(JSON.stringify(response),true);
       },
       (error) => {
-        this.consoleService.log('simulation error: ' + JSON.stringify(error));
+        this.consoleService.log('simulation error: ' + JSON.stringify(error),false);
       }
     );
   }
 
-  RandomActionAPI() {
+  async RandomActionAPI() {
     this.simulatorApiService.RandomAction().subscribe(
       async (response) => {
-        this.consoleService.log(JSON.stringify(response));
+        this.consoleService.log(JSON.stringify(response),true);
         if (JSON.stringify(response).toString().includes('landed')) {
-          this.PerformLanding();
+          await this.uiContainerService.WhenLandingEmit().toPromise(); // Convert toPromise()
+          this.uiContainerService.CheckParking();
+        } else {
+          this.uiContainerService.CheckParking();
         }
-        // Add the following line to activate CheckParked() function
-        this.uiContainerService.onRandomActionApiCall();
       },
       (error) => {
-        this.consoleService.log('simulation error: ' + JSON.stringify(error));
+        this.consoleService.log('simulation error: ' + JSON.stringify(error),false);
       }
     );
   }
+  
+  
 
    // Delete All Planes
    deleteAllPlanes() {
@@ -72,5 +71,7 @@ export class ControllerComponent {
       }
     );
   }
+
+  
 
 }

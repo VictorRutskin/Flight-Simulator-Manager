@@ -1,0 +1,15 @@
+@import '../../../styles.scss';
+
+body {
+    top: 1000px;
+    margin: 0;
+  }
+  .container {
+    flex: 1;
+  }
+  footer {
+    margin-top: 45%;
+    text-align: center;
+    color: $Console-Text-Color;
+    font-size: $Console-Text-Size;
+  }

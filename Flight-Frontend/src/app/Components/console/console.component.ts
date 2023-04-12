@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ConsoleService } from 'src/app/Services/Console-service/console.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { ConsoleService } from 'src/app/Services/Console-service/console.service
   styleUrls: ['./console.component.scss']
 })
 export class ConsoleComponent implements OnInit {
+  @ViewChild('console', { static: false })
+  consoleElementRef!: ElementRef;
   @Input() input: string | undefined;
   messages: string[] = [];
 
@@ -15,12 +17,22 @@ export class ConsoleComponent implements OnInit {
   ngOnInit() {
     this.consoleService.consoleMessages$.subscribe((newMessage) => {
       this.messages.push(newMessage);
+      this.scrollToBottom();
     });
   }
+  
 
   ngOnChanges() {
     if (this.input) {
       this.messages.push(this.input);
     }
   }
+
+  scrollToBottom() {
+    setTimeout(() => {
+      const consoleElement = this.consoleElementRef.nativeElement;
+      consoleElement.scrollTop = consoleElement.scrollHeight;
+    }, 0);
+  }
+  
 }

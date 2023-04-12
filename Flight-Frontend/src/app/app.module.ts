@@ -9,6 +9,8 @@ import { UiContainerComponent } from './Components/ui-container/ui-container.com
 import { ConsoleComponent } from './Components/console/console.component';
 import { MainPageComponent } from './Pages/main-page/main-page.component';
 import { ControllerComponent } from './Components/controller/controller.component';
+import { BackgroundmusicComponent } from './Components/backgroundmusic/backgroundmusic.component';
+import { FooterComponent } from './Components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ControllerComponent } from './Components/controller/controller.componen
     UiContainerComponent,
     ConsoleComponent,
     MainPageComponent,
-    ControllerComponent
+    ControllerComponent,
+    BackgroundmusicComponent,
+    FooterComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   bootstrap: [AppComponent],

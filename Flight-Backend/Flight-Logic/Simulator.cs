@@ -50,12 +50,12 @@ namespace Flight_Logic
 
                     string logMessage = Airport.PlaneLanded(ref plane);
 
-                    await simulatorDbcontext.planes.AddAsync(plane);
+                    if(logMessage !="No free field to land to, the plane moves to the other close airport.")
+                    {
+                        await simulatorDbcontext.planes.AddAsync(plane);
+                    }
                     await simulatorDbcontext.SaveChangesAsync();
 
-                    //// send flight to API
-                    //var content = new StringContent(JsonConvert.SerializeObject(plane));
-                    //await _client.PostAsync("https://localhost:7026/api/flights", content);
 
                     return logMessage;
                 }

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flight-Server", "Flight-Server\Flight-Server.csproj", "{0407D5E0-9D43-4846-A6BE-755F88A03802}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flight-Server", "Flight-Server\Flight-Server.csproj", "{0407D5E0-9D43-4846-A6BE-755F88A03802}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flight-Logic", "Flight-Logic\Flight-Logic.csproj", "{C15A4B9D-0C6C-4434-BBE6-A7DF4971A122}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flight-Logic", "Flight-Logic\Flight-Logic.csproj", "{C15A4B9D-0C6C-4434-BBE6-A7DF4971A122}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

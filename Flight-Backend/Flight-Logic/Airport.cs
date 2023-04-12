@@ -56,7 +56,7 @@ namespace Flight_Logic
                     throw new ArgumentException("No free field to land to, the plane moves to the other close airport.");
                 }
 
-                return "At " + plane.LandingTime + ", Flight number " + plane.FlightNumber + " that has " + plane.PassengersCount + " passengers has landed safely in field " + plane.CurrentField;
+                return "At " + plane.LandingTime + ", Flight number " + plane.FlightNumber + " that has " + plane.PassengersCount + " passengers has landed safely in field " + plane.CurrentField+".";
             }
             catch (ArgumentException exception)
             {
@@ -97,7 +97,7 @@ namespace Flight_Logic
                     DateTime dateTime = DateTime.Now;
                     string NowTime = dateTime.ToString("o");
 
-                    return "At " + NowTime + ", Flight number " + localplane.FlightNumber + " with " + localplane.PassengersCount + " passengers has departed safely from field " + localplane.CurrentField;
+                    return "At " + NowTime + ", Flight number " + localplane.FlightNumber + " with " + localplane.PassengersCount + " passengers has departed safely from field " + localplane.CurrentField + ".";
                 }
                 else
                 {
@@ -110,7 +110,7 @@ namespace Flight_Logic
             }
             catch (Exception exception)
             {
-                return "Unknown Error";
+                return "Unknown Error.";
             }
         }
 

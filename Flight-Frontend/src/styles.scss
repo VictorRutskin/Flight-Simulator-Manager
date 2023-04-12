@@ -41,6 +41,10 @@ $color-parked: #0000FF;
 
   body{
     background-color: $color-background;
+    background-image: url('/../assets/plane.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
 
   .Title{

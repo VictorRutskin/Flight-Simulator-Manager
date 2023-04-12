@@ -17,15 +17,11 @@ export class UiContainerComponent {
 
   ngOnInit(): void {
     if (this.uiContainerService.subsVar == undefined) {
-      this.uiContainerService.subsVar = this.uiContainerService.invokeFirstComponentFunction.subscribe(
-        (name: string) => {
+      this.uiContainerService.subsVar = this.uiContainerService.invokeFirstComponentFunction.subscribe(() =>{
           this.startLanding();
-        }
-      );
+      });  
     }
-
-    // Add the following lines to subscribe to the randomActionApiCallSubject
-    this.uiContainerService.invokeRandomActionApiFunction.subscribe(() => {
+    this.uiContainerService.invokeRandomActionApiParkingCheckFunction.subscribe(() => {
       this.CheckParked();
     });
   }  
@@ -39,7 +35,7 @@ export class UiContainerComponent {
   }
 
   // checks from database which fields are occupied and paints them red
-  CheckParked(): void {
+  async CheckParked(): Promise<void> {
     this.simulatorApiService.getAmountOfParked().subscribe(
       count => {
         this.ParkingPlanes = count;
