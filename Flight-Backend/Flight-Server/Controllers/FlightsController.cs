@@ -79,5 +79,26 @@ namespace Flight_Server.Controllers
                 return BadRequest(errorObject.ToString());
             }
         }
+
+
+        [HttpGet("GetAllPlanes")]
+        public async Task<IActionResult> GetAllPlanes()
+        {
+            try
+            {
+                string logResponse = await _simulator.GetAllPlanes();
+                JObject jsonObject = new JObject();
+                jsonObject.Add("message", logResponse);
+                return Ok(jsonObject.ToString());
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception and return an error response
+                JObject errorObject = new JObject();
+                errorObject.Add("error", "Failed to get all planes");
+                errorObject.Add("message", ex.Message);
+                return BadRequest(errorObject.ToString());
+            }
+        }
     }
 }

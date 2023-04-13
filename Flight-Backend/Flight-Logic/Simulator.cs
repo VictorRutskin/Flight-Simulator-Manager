@@ -3,6 +3,7 @@ using Flight_Logic.Data;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Numerics;
+using System.Text;
 
 namespace Flight_Logic
 {
@@ -32,6 +33,43 @@ namespace Flight_Logic
                 return ex.Message;
             }
         }
+
+        public async Task<string> GetAllPlanes()
+        {
+            try
+            {
+                // Retrieve all planes from the database
+                var planes = await simulatorDbcontext.planes.ToListAsync();
+
+                if (planes.Count == 0)
+                {
+                    // Return a message when there are no planes
+                    return "No planes Are currently parking.";
+                }
+                else
+                {
+                    // Create a string representation of all the planes
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var plane in planes)
+                    {
+                        sb.AppendLine($"FlightNumber: {plane.FlightNumber}"+ $" Is in field: {plane.CurrentField}. ");
+                    }
+
+                    // Return the string representation of all the planes
+
+                    string result = sb.ToString().Replace("\r", "").Replace("\n", "");
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+
+
 
 
         public async Task<string> SingleAction()

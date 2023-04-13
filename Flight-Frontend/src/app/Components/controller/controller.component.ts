@@ -33,7 +33,7 @@ export class ControllerComponent {
   }
 
   getParkingPlanes() {
-    this.simulatorApiService.getFlights().subscribe(
+    this.simulatorApiService.getAllPlanes().subscribe(
       (response) => {
         this.consoleService.log(JSON.stringify(response),true);
       },
